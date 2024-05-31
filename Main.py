@@ -1,34 +1,31 @@
 # class defining
-class MatOps:
+class Matrix:
     # __init__ ---> Constructor-->that execute the method as soon as the object of the class is created
-    def __init__(self):
-        self.mat1 = list()
-        self.mat2 = list()
-        self.Options()
+    # special/magic/dunder method
+    #self is object and we can say object is self
 
-    def Options(self):
-        user_input = input("""What Operations you want to do!
-        1.Single Matrix Operation
-        2.Dual Matrix Operation
-        3.Exit""")
-        if (user_input == '1'):
-            self.Single_Matrix_Ops()
-        elif (user_input == '2'):
-            pass
-        elif (user_input == '3'):
-            pass
+    def __init__(self,mat):
+        self.mat=mat
+        self.rows = len(mat)
+        self.cols = len(mat[0])
+
+    #__str__ --> special method which defines how the data type looks like
+    def __str__(self):
+        res=""
+        for i in range(len(self.mat)):
+            for j in range(len(self.mat[i])):
+                res+=str(self.mat[i][j])+" "
+            res+="\n"
+        return res
+
+    def __add__(self,other):
+        if self.rows != other.rows or self.cols != other.cols:
+            raise ValueError("Matrices must have same number of rows and columns")
         else:
-            print('try again')
-    def Single_Matrix_Ops(self):
-        u_input=input("""what Operation would you like to do?
-        1.Transpose of a matrix
-        2.Adjoint of a matrix
-        """)
-        if(u_input == '1'):
-            print('you have chosen adjoint')
-        elif(u_input == '2'):
-            print('you have chosen transpose')
+            for i in range(len(self.mat)):
+                for j in range(len(self.mat[i])):
+                        self.mat[i][j]+=other.mat[i][j]
 
-
-Mat=MatOps()
-print(Mat)
+Mat1=Matrix([[1,3,3,5],[1,2,3,4]])
+Mat2=Matrix([[1,3,5,7],[2,3,4,5]])
+print(Mat1+Mat2)

@@ -1,4 +1,4 @@
 # MatOps-Library
-This library contains all the basic Matrix Operations based on OOP concepts
->Happy Coding 
+This library create a new data type named Matrix which will be able to perform the matrix operation
+
 
