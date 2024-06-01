@@ -2,13 +2,13 @@
 class Matrix:
     # __init__ ---> Constructor-->that execute the method as soon as the object of the class is created
     # special/magic/dunder method
-    #self is object and we can say object is self
-    #instance variable--> the variable for which the value of that is different for different objects
+    # self is object and we can say object is self
+    # instance variable--> the variable for which the value of that is different for different objects
 
     def __init__(self, mat):
         self.mat = mat
         self.__rows = len(mat)
-        self.__cols = max(len(row) for row in mat) #fixed with len(mat[0])
+        self.__cols = max(len(row) for row in mat)  #fixed with len(mat[0])
 
     #__str__ --> special method which defines how the data type looks like
     def __str__(self):
@@ -18,7 +18,6 @@ class Matrix:
                 res += str(self.mat[i][j]) + " "
             res += "\n"
         return res
-
 
     def __add__(self, other):
         if self.__rows != other.__rows or self.__cols != other.__cols:
@@ -54,13 +53,17 @@ class Matrix:
                 result_data.append(result_row)
             return Matrix(result_data)
 
+    def transpose(self):
+        transposed_mat = []
+        for i in range(self.__cols):
+            transposed_row = []
+            for j in range(self.__rows):
+                transposed_row.append(self.mat[j][i])
+            transposed_mat.append(transposed_row)
+        return Matrix(transposed_mat)
 
 
-
-
-Mat1 = Matrix([[1,1], [1, 1]])
-Mat2 = Matrix([[1, 1,1], [1,1,1]])
+Mat1 = Matrix([[1, 3, 2], [3, 4, 5]])
+Mat2 = Matrix([[1, 1, 1], [1, 1, 1]])
 print(Mat1)
-print(Mat2)
-print(Mat1 * Mat2)
-
+print(Mat1.transpose())
