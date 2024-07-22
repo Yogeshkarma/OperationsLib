@@ -1,4 +1,4 @@
-# MatOps-Library
+# Operations Library
 This library create a new data type named Matrix which will be able to perform the 2D matrix operation
 
 # Operations Implemented
